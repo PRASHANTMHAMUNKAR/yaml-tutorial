@@ -1,0 +1,32 @@
+name: CI pipeline
+
+on: 
+  push:
+  branches: 
+    - main
+
+jobs: 
+  build: 
+
+    runs-on: ubuntu-latest
+
+    steps: 
+
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+
+      - name: Build Project
+        run: mvn clean package
+
+      - name: Run Test
+        run: mvn test 
+
+      - name: upload artifacts
+        usage: action/upload-artifact@v4
+        with:
+          name: application
+          path: target/*.jar  
+          

@@ -1,0 +1,26 @@
+project:
+  name: devops-learning
+
+environment: 
+  dev:
+    server: 192.168.1.101
+    os: ubuntu
+    ram: 4GB
+  qa: 
+    server: 192.168.1.102
+    os: redhat
+    ram: 8GB
+
+  prod: 
+    server: 192.168.1.103
+    os: windows
+    ram: 6GB
+
+tools:
+  - git
+  - github-action
+  - Docker
+  - Jenkins
+  - Terraform
+  - kubernetes
+  - Ansible

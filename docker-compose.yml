@@ -1,0 +1,43 @@
+version: "3.9"
+
+services: 
+  nginx:
+    image: nginx-latest
+    container_latest: web-server
+    ports: 
+      - "80:80"
+    depends_on: 
+      - app
+
+app: 
+  image: php:8.2-apache
+  container_name: php-app
+  volumes:
+    - ./app/var/www/html
+
+mysql:
+  image: mysql:8
+  container_name: mysql-db
+  restart: always
+  environment:
+    MYSQL_ROOT_PASSWORD: root123
+    MYSQL_DATABSASE: companydb
+    MYSQL_USER: admin
+    MYSQL_PASSWORD: admin123
+  volumes:
+    - mysql-data:/var/lib/mysql  
+
+phpmyadmin:
+  image: phpmyadmin
+  ports:
+    - "8080:80"
+  environment: 
+    PMA_HOST: mysql
+
+redis:
+  image: redis-latest
+  ports:
+    - "6379:6379"
+
+volumes:
+  mysql-data          

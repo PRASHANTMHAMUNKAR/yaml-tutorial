@@ -1,0 +1,20 @@
+name: build-project
+
+on: 
+  push: 
+    branches:
+      - main
+
+jobs: 
+  build: 
+    runs-on: ubuntu-latest
+
+    steps: 
+       - name: checkout code
+       - uses: action/checkout@v4 
+
+       - name: show files
+       - run: ls -la 
+
+       - name: Print Message 
+       - run: echo "Build Successful"  
